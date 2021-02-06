@@ -1,0 +1,10 @@
+--- a/net/minecraft/world/BossInfoLerping.java
++++ b/net/minecraft/world/BossInfoLerping.java
+@@ -34,6 +34,7 @@
+       return this.field_186750_b + (this.field_186766_h - this.field_186750_b) * f;
+    }
+ 
++   @SuppressWarnings("incomplete-switch")
+    public void func_186765_a(SPacketUpdateBossInfo p_186765_1_) {
+       switch(p_186765_1_.func_186902_b()) {
+       case UPDATE_NAME:

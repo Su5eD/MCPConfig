@@ -1,0 +1,11 @@
+--- a/net/minecraft/entity/monster/EntityPolarBear.java
++++ b/net/minecraft/entity/monster/EntityPolarBear.java
+@@ -167,7 +167,7 @@
+ 
+    class AIAttackPlayer extends EntityAINearestAttackableTarget<EntityPlayer> {
+       public AIAttackPlayer() {
+-         super(EntityPolarBear.this, EntityPlayer.class, 20, true, true, (Predicate<? super T>)null);
++         super(EntityPolarBear.this, EntityPlayer.class, 20, true, true, null);
+       }
+ 
+       public boolean func_75250_a() {

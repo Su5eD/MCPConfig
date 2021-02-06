@@ -1,0 +1,10 @@
+--- a/net/minecraft/client/renderer/WorldVertexBufferUploader.java
++++ b/net/minecraft/client/renderer/WorldVertexBufferUploader.java
+@@ -9,6 +9,7 @@
+ import net.minecraft.client.renderer.vertex.VertexFormatElement;
+ 
+ public class WorldVertexBufferUploader {
++   @SuppressWarnings("incomplete-switch")
+    public void func_181679_a(VertexBuffer p_181679_1_) {
+       if(p_181679_1_.func_178989_h() > 0) {
+          VertexFormat vertexformat = p_181679_1_.func_178973_g();
