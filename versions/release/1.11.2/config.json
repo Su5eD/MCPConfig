@@ -7,7 +7,7 @@
         "version" : "net.minecraftforge:forgeflower:0.2.3",
         "args" : [ "-din=1", "-rbr=1", "-dgs=1", "-asc=1", "-rsy=1", "-iec=1", "-jvn=1", "-log=TRACE", "-cfg", "{libraries}", "{input}", "{output}" ],
         "jvmargs" : [ "-Xmx4G" ],
-        "repo" : "https://maven.gemwire.uk"
+        "repo" : "https://maven.gemwire.uk/"
     },
     "merge" : {
         "version" : "net.minecraftforge:mergetool:0.2.3.2:fatjar",
