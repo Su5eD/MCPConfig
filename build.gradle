@@ -2,7 +2,7 @@ buildscript {
     repositories {
         mavenLocal()
         mavenCentral()
-        maven { url = 'https://files.minecraftforge.net/maven/'}
+        maven { url = 'https://maven.minecraftforge.net/'}
         maven { url = 'https://plugins.gradle.org/m2/' }
     }
     dependencies {
@@ -79,6 +79,10 @@ subprojects {
 
     ext {
         MC_VERSION = MinecraftVersion.from(project.name)
+        FORGE_MAVEN = 'https://maven.minecraftforge.net/'
+        PATH_BUILD = rootProject.file('build').absolutePath
+        PATH_VERSION = project.projectDir.absolutePath + '/'
+        PATH_DISTRO = PATH_BUILD + '/distributions'
         PATH_CACHED_LIBRARIES = PATH_BUILD + '/libraries/'
         PATH_CACHED_VERSION = PATH_BUILD + '/versions/' + project.version + '/'
         PATH_CACHED_VERSION_DATA = PATH_CACHED_VERSION + 'data/'
