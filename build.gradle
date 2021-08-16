@@ -185,10 +185,13 @@ subprojects {
         dest file(PATH_CACHED_VERSION + 'joined.jar')
     }
     
-    task makeObfToIntermediate(type: RenameMappings, dependsOn: [downloadClientMappings]) {
-        intermediate = file('joined.tsrg')
-        if (CONFIG.official)
+    task makeObfToIntermediate(type: RenameMappings) {
+        if (CONFIG.official) {
+            dependsOn('downloadClientMappings')
             official = downloadClientMappings.dest
+        }
+
+        intermediate = file('joined.tsrg')
         dest = file(PATH_CACHED_VERSION + 'obf_to_intermediate.tsrg')
     }
 
@@ -418,13 +421,13 @@ subprojects {
         jdks.each{ jdk ->
             def testPath = project.file(PATH_CACHED_VERSION + 'test/' + jdk.name + '/')
             
-            def tstDecompile = task "testDecompile${child.Name}${jdk.Name}"(type: FernflowerTask, dependsOn: [downloadFernflower, child.rename, child.libraries]) {
+            def tstDecompile = task "testDecompile${child.Name}${jdk.Name}"(type: FernflowerTask, dependsOn: [downloadFernflower, child.rename, child.libraries]  + (MCINJECTOR == null ? [] : [child.mcinject])) {
                 config FERNFLOWER, downloadFernflower
                 javaLauncher = javaToolchains.launcherFor {
                     languageVersion = JavaLanguageVersion.of(jdk.version)
                 }
                 libraries = child.libraries.dest
-                input = child.rename.dest
+                input = MCINJECTOR != null ? child.mcinject.dest : child.rename.dest
                 log = new File(testPath, side + '.decompile.log')
                 dest = new File(testPath, side + '.decompile.jar')
                 
@@ -624,6 +627,7 @@ subprojects {
         archiveBaseName = rootProject.name
         archiveVersion = project.version
         destinationDirectory = file(PATH_BUILD + '/distributions')
+        println destinationDirectory
 
         from generateConfiguration
         from(file('joined.tsrg')){ into 'config/' }
