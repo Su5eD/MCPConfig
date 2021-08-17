@@ -1,11 +1,11 @@
 {
     "mcinjector" : {
-        "version" : "de.oceanlabs.mcp:mcinjector-legacy:3.8.3:fatjar",
+        "version" : "de.oceanlabs.mcp:mcinjector:0.2.2:fatjar",
         "args" : [ "--in", "{input}", "--out", "{output}", "--log", "{log}", "--lvt=LVT", "--legacy=true", "--exc", "{exceptions}", "--acc", "{access}", "--ctr", "{constructors}" ],
         "repo" : "https://ateranimavis.github.io/maven/"
     },
     "fernflower" : {
-        "version" : "net.minecraftforge:forgeflower-legacy:1.0.2",
+        "version" : "net.minecraftforge:forgeflower:0.2.2",
         "args" : [ "-din=1", "-rbr=1", "-dgs=1", "-asc=1", "-rsy=1", "-iec=1", "-jvn=1", "-log=TRACE", "-cfg", "{libraries}", "{input}", "{output}" ],
         "jvmargs" : [ "-Xmx4G" ],
         "repo" : "https://ateranimavis.github.io/maven/"
