@@ -224,9 +224,9 @@ subprojects {
         if (MCINJECTOR != null) {
             child.mcinject = task "mcinject${child.Name}"(type: MCInjectTask, dependsOn: [downloadMCInjector, child.rename, makeEmptyFile/*, makeExceptions, fixAccessLevels*/]) {
                 config MCINJECTOR, downloadMCInjector
-                access makeEmptyFile.dest //fixAccessLevels.dest
+                access project.file('access.txt').exists() ? project.file('access.txt') : makeEmptyFile.dest //fixAccessLevels.dest
                 constructors project.file('constructors.txt')
-                exceptions makeEmptyFile.dest //makeExceptions.dest
+                exceptions project.file('exceptions.txt').exists() ? project.file('exceptions.txt') : makeEmptyFile.dest //makeExceptions.dest
                 standardOutput rootProject.NULL_OUPUT
                 log file(PATH_CACHED_VERSION + s + '.mci.log')
                 input child.rename.dest
@@ -631,6 +631,15 @@ subprojects {
 
         from generateConfiguration
         from(file('joined.tsrg')){ into 'config/' }
+
+        def access = file('access.txt')
+        if (access.exists()) from(access) { into 'config/' }
+
+        def constructors = file('constructors.txt')
+        if (constructors.exists()) from(constructors) { into 'config/' }
+
+        def exceptions = file('exceptions.txt')
+        if (exceptions.exists()) from(exceptions) { into 'config/' }
 
         def patches = file('patches')
         if (patches.exists()) {
