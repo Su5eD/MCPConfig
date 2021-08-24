@@ -252,6 +252,12 @@ subprojects {
             downloadJson.dest.json.libraries.stream().map{ it?.downloads?.artifact?.path }.findAll{ it != null }.each{ library(file(PATH_CACHED_LIBRARIES + it)) }
         }
     }
+    
+    task dumpStatic(type: DumpStatics, dependsOn: extractInheritance) {
+        srg file('joined.tsrg')
+        meta extractInheritance.dest
+        dest file(PATH_CACHED_VERSION_DATA + 'static_methods.txt')
+    }
 
     task dumpOverrides(type: DumpOverrides, dependsOn: [extractInheritance, makeObfToIntermediate]) {
         srg makeObfToIntermediate.dest
@@ -631,6 +637,11 @@ subprojects {
 
         from generateConfiguration
         from(file('joined.tsrg')){ into 'config/' }
+        
+        if (MC_VERSION.compareTo(MC_1_16_5) < 0) {
+            dependsOn dumpStatic
+            from(dumpStatic){ into 'config/' }
+        }
 
         def access = file('access.txt')
         if (access.exists()) from(access) { into 'config/' }
