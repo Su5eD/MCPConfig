@@ -1,0 +1,11 @@
+--- a/net/minecraft/server/integrated/IntegratedServer.java
++++ b/net/minecraft/server/integrated/IntegratedServer.java
+@@ -102,7 +102,7 @@
+       return true;
+    }
+ 
+-   protected void func_71217_p() {
++   public void func_71217_p() {
+       boolean var1 = this.field_71348_o;
+       this.field_71348_o = this.field_71347_n.func_71752_f();
+       if(!var1 && this.field_71348_o) {

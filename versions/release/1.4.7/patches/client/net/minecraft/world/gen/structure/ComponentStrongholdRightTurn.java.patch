@@ -1,0 +1,13 @@
+--- a/net/minecraft/world/gen/structure/ComponentStrongholdRightTurn.java
++++ b/net/minecraft/world/gen/structure/ComponentStrongholdRightTurn.java
+@@ -11,6 +11,10 @@
+ 
+ public class ComponentStrongholdRightTurn extends ComponentStrongholdLeftTurn {
+ 
++   public ComponentStrongholdRightTurn(int p_i3843_1_, Random p_i3843_2_, StructureBoundingBox p_i3843_3_, int p_i3843_4_) {
++      super(p_i3843_1_, p_i3843_2_, p_i3843_3_, p_i3843_4_);
++   }
++
+    public void func_74861_a(StructureComponent p_74861_1_, List p_74861_2_, Random p_74861_3_) {
+       if(this.field_74885_f != 2 && this.field_74885_f != 3) {
+          this.func_74989_b((ComponentStrongholdStairs2)p_74861_1_, p_74861_2_, p_74861_3_, 1, 1);

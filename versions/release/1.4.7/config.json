@@ -1,0 +1,23 @@
+{
+    "mcinjector": {
+        "version": "de.oceanlabs.mcp:mcinjector:3.7.3:fatjar",
+        "args": ["--in", "{input}", "--out", "{output}", "--log", "{log}", "--lvt=LVT", "--exc", "{exceptions}", "--acc", "{access}", "--ctr", "{constructors}"]
+    },
+    "fernflower": {
+        "version": "net.minecraftforge:forgeflower-legacy:0.8.4.6",
+        "args": ["-din=1", "-rbr=0", "-dgs=1", "-asc=1", "-log=TRACE", "{input}", "{output}"],
+        "jvmargs": ["-Xmx4G"],
+        "repo": "https://maven.su5ed.dev/releases/"
+    },
+    "merge": {
+        "version": "net.minecraftforge:mergetool:0.2.3.2:fatjar",
+        "args": ["--client", "{client}", "--server", "{server}", "--ann", "{version}", "--output", "{output}", "--inject", "false"],
+        "jvmargs": []
+    },
+    "rename": {
+        "version": "net.md-5:SpecialSource:1.8.3:shaded",
+        "args": ["--in-jar", "{input}", "--out-jar", "{output}", "--srg-in", "{mappings}", "--kill-source"],
+        "repo": "https://repo1.maven.org/maven2/"
+    },
+    "libraries": {}
+}

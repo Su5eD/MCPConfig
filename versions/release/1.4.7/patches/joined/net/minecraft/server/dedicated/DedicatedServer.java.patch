@@ -1,0 +1,11 @@
+--- a/net/minecraft/server/dedicated/DedicatedServer.java
++++ b/net/minecraft/server/dedicated/DedicatedServer.java
+@@ -196,7 +196,7 @@
+       System.exit(0);
+    }
+ 
+-   protected void func_71190_q() {
++   public void func_71190_q() {
+       super.func_71190_q();
+       this.func_71333_ah();
+    }

@@ -1,0 +1,23 @@
+--- a/net/minecraft/client/audio/CodecMus.java
++++ b/net/minecraft/client/audio/CodecMus.java
+@@ -2,6 +2,8 @@
+ 
+ import cpw.mods.fml.relauncher.Side;
+ import cpw.mods.fml.relauncher.SideOnly;
++
++import java.io.IOException;
+ import java.io.InputStream;
+ import net.minecraft.client.audio.MusInputStream;
+ import paulscode.sound.codecs.CodecJOrbis;
+@@ -10,6 +12,10 @@
+ public class CodecMus extends CodecJOrbis {
+ 
+    protected InputStream openInputStream() {
+-      return new MusInputStream(this, this.url, this.urlConnection.getInputStream());
++      try {
++         return new MusInputStream(this, this.url, this.urlConnection.getInputStream());
++      } catch (IOException e) {
++         return null;
++      }
+    }
+ }

@@ -13,6 +13,7 @@ net.minecraftforge.mcpconfig.tasks.Utils.init()
 
 ext {
     MC_1_16_5 = MinecraftVersion.from('1.16.5')
+    MC_1_12_2 = MinecraftVersion.from('1.12.2')
     VERSIONS = subprojects.collect{it.name}.sort{ a,b -> MinecraftVersion.from(a).compareTo(MinecraftVersion.from(b)) } as List
     NULL_OUTPUT = new OutputStream() { public void write(int b){} }
     TIMESTAMP = (new Date()).format('yyyyMMdd.HHmmss')
@@ -730,8 +731,11 @@ subprojects {
         from generateConfiguration
         from(file('joined.tsrg')){ into 'config/' }
         
-        if (MC_VERSION.compareTo(MC_1_16_5) < 0) {
+        if (MC_VERSION.compareTo(MC_1_12_2) <= 0) {
             dependsOn dumpStatic
+            from(file('access.txt')){ into 'config/' }
+            from(file('constructors.txt')) { into 'config/' }
+            from(file('exceptions.txt')) { into 'config/' }
             from(dumpStatic){ into 'config/' }
         }
 

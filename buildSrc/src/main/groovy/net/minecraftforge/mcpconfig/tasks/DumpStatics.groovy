@@ -22,8 +22,12 @@ public class DumpStatics extends SingleFileOutput {
                 def name = method['name']
                 def desc = method['desc']
                 def mapped = srgO.getClass(cls)?.remapMethod(name, desc)
-                if (mapped != null && !desc.contains('()') && mapped.contains('func_'))
-                    methods.add(mapped)
+                if (!desc.contains('()')) {
+                    if (mapped != null && mapped.contains('func_'))
+                        methods.add(mapped)
+                    else
+                        methods.add(name)
+                }
             }
         }
 

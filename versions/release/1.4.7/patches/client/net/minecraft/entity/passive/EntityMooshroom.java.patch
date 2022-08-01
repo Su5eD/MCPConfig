@@ -1,0 +1,17 @@
+--- a/net/minecraft/entity/passive/EntityMooshroom.java
++++ b/net/minecraft/entity/passive/EntityMooshroom.java
+@@ -54,10 +54,10 @@
+       return new EntityMooshroom(this.field_70170_p);
+    }
+ 
+-   // $FF: synthetic method
+-   public EntityCow func_70879_a(EntityAgeable p_70879_1_) {
+-      return this.func_70879_a(p_70879_1_);
+-   }
++//   // $FF: synthetic method
++//   public EntityCow func_70879_a(EntityAgeable p_70879_1_) {
++//      return this.func_70879_a(p_70879_1_);
++//   }
+ 
+    // $FF: synthetic method
+    public EntityAgeable func_90011_a(EntityAgeable p_90011_1_) {

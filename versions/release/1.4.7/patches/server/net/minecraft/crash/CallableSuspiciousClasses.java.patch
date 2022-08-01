@@ -1,0 +1,20 @@
+--- a/net/minecraft/crash/CallableSuspiciousClasses.java
++++ b/net/minecraft/crash/CallableSuspiciousClasses.java
+@@ -18,9 +18,14 @@
+ 
+    public String func_85085_a() {
+       StringBuilder var1 = new StringBuilder();
+-      Field var2 = ClassLoader.class.getDeclaredField("classes");
+-      var2.setAccessible(true);
+-      ArrayList var3 = new ArrayList((Vector)var2.get(CrashReport.class.getClassLoader()));
++      ArrayList var3;
++      try {
++	     Field var2 = ClassLoader.class.getDeclaredField("classes");
++	     var2.setAccessible(true);
++	     var3 = new ArrayList((Vector)var2.get(CrashReport.class.getClassLoader()));
++      } catch(Exception ex) {
++    	 return "";
++      }
+       boolean var4 = true;
+       boolean var5 = !CrashReport.class.getCanonicalName().equals("net.minecraft.CrashReport");
+       HashMap var6 = new HashMap();

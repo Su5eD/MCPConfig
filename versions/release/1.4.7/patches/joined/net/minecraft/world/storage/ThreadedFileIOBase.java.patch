@@ -1,0 +1,12 @@
+--- a/net/minecraft/world/storage/ThreadedFileIOBase.java
++++ b/net/minecraft/world/storage/ThreadedFileIOBase.java
+@@ -21,7 +21,8 @@
+    }
+ 
+    public void run() {
+-      this.func_75736_b();
++      while(true)
++         this.func_75736_b();
+    }
+ 
+    private void func_75736_b() {
