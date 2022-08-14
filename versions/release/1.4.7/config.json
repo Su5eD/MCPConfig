@@ -16,9 +16,9 @@
         "jvmargs": []
     },
     "rename": {
-        "version": "net.md-5:SpecialSource:1.8.3:shaded",
+        "version": "net.md-5:SpecialSource:1.11.1-fixed:shaded",
         "args": ["--in-jar", "{input}", "--out-jar", "{output}", "--srg-in", "{mappings}", "--kill-source"],
-        "repo": "https://repo1.maven.org/maven2/"
+        "repo": "https://maven.su5ed.dev/releases/"
     },
     "libraries": {
         "client": ["net.sourceforge.argo:argo:2.25", "org.bouncycastle:bcprov-jdk15on:1.47"],
