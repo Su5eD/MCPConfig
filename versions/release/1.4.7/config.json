@@ -1,5 +1,4 @@
 {
-    "filter": "^(?!argo|org/bouncycastle).*",
     "mcinjector": {
         "version": "de.oceanlabs.mcp:mcinjector:3.7.3:fatjar",
         "args": ["--in", "{input}", "--out", "{output}", "--log", "{log}", "--lvt=LVT", "--exc", "{exceptions}", "--acc", "{access}", "--ctr", "{constructors}"]
@@ -19,6 +18,11 @@
         "version": "net.md-5:SpecialSource:1.8.3:shaded",
         "args": ["--in-jar", "{input}", "--out-jar", "{output}", "--srg-in", "{mappings}", "--kill-source"],
         "repo": "https://repo1.maven.org/maven2/"
+    },
+    "filter": {
+        "version": "dev.su5ed:JarFilter:1.0.0:shaded",
+        "args": ["--input", "{input}", "--output", "{output}", "--filter", "argo/,org/bouncycastle/"],
+        "repo": "https://maven.su5ed.dev/releases/"
     },
     "libraries": {
         "client": ["net.sourceforge.argo:argo:2.25", "org.bouncycastle:bcprov-jdk15on:1.47"],
