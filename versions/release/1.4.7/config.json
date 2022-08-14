@@ -1,5 +1,4 @@
 {
-    "filter": "^(?!argo|org/bouncycastle).*",
     "mcinjector": {
         "version": "de.oceanlabs.mcp:mcinjector:3.7.3:fatjar",
         "args": ["--in", "{input}", "--out", "{output}", "--log", "{log}", "--lvt=LVT", "--exc", "{exceptions}", "--acc", "{access}", "--ctr", "{constructors}"]
@@ -18,6 +17,11 @@
     "rename": {
         "version": "net.md-5:SpecialSource:1.11.1-fixed:shaded",
         "args": ["--in-jar", "{input}", "--out-jar", "{output}", "--srg-in", "{mappings}", "--kill-source"],
+        "repo": "https://maven.su5ed.dev/releases/"
+    },
+    "filter": {
+        "version": "dev.su5ed:JarFilter:1.0.0:shaded",
+        "args": ["--input", "{input}", "--output", "{output}", "--filter", "argo/,org/bouncycastle/"],
         "repo": "https://maven.su5ed.dev/releases/"
     },
     "libraries": {

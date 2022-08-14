@@ -698,7 +698,7 @@ subprojects {
                     steps_def.each { step ->
                         def idx = step.value.findIndexOf { it.type == 'rename' }
                         def nextInput = step.value[idx + 1].input
-                        step.value.add(idx + 1, [type: 'filter', filter: CONFIG.filter, input: nextInput])
+                        step.value.add(idx + 1, [type: 'filter', input: nextInput])
                         step.value[idx + 2].input = '{filterOutput}'
                     }
                 }
@@ -725,6 +725,9 @@ subprojects {
                         mcinject CONFIG.mcinjector
                         merge CONFIG.merge
                         rename CONFIG.rename
+                        if (CONFIG.filter) {
+                            filter CONFIG.filter
+                        }
                     }
                     libraries CONFIG.libraries
                 }
