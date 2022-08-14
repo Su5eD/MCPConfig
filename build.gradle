@@ -693,6 +693,16 @@ subprojects {
                         [type: 'patch', input: '{injectOutput}']
                     ]
                 ]
+                
+                if (CONFIG.filter) {
+                    steps_def.each { step ->
+                        def idx = step.value.findIndexOf { it.type == 'rename' }
+                        def nextInput = step.value[idx + 1].input
+                        step.value.add(idx + 1, [type: 'filter', filter: CONFIG.filter, input: nextInput])
+                        step.value[idx + 2].input = '{filterOutput}'
+                    }
+                }
+                
                 json {
                     spec 1
                     version project.version

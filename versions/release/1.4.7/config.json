@@ -1,4 +1,5 @@
 {
+    "filter": "^(?!argo|org/bouncycastle).*",
     "mcinjector": {
         "version": "de.oceanlabs.mcp:mcinjector:3.7.3:fatjar",
         "args": ["--in", "{input}", "--out", "{output}", "--log", "{log}", "--lvt=LVT", "--exc", "{exceptions}", "--acc", "{access}", "--ctr", "{constructors}"]
@@ -19,5 +20,9 @@
         "args": ["--in-jar", "{input}", "--out-jar", "{output}", "--srg-in", "{mappings}", "--kill-source"],
         "repo": "https://repo1.maven.org/maven2/"
     },
-    "libraries": {}
+    "libraries": {
+        "client": ["net.sourceforge.argo:argo:2.25", "org.bouncycastle:bcprov-jdk15on:1.47"],
+        "server": ["net.sourceforge.argo:argo:2.25", "org.bouncycastle:bcprov-jdk15on:1.47"],
+        "joined": ["net.sourceforge.argo:argo:2.25", "org.bouncycastle:bcprov-jdk15on:1.47"]
+    }
 }
