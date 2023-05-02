@@ -295,7 +295,7 @@ subprojects {
     }
     
     task dumpStatic(type: DumpStatics, dependsOn: extractInheritance) {
-        srg file('joined.tsrg')
+        srg file('joined.srg')
         meta extractInheritance.dest
         dest file(PATH_CACHED_VERSION_DATA + 'static_methods.txt')
     }
@@ -639,7 +639,7 @@ subprojects {
                     java_target JAVA_TARGET
                     encoding ENCODING
                     data {
-                        mappings 'config/joined.tsrg'
+                        mappings 'config/joined.srg'
                         inject 'config/inject/'
                         patches {
                             client 'patches/client/'
@@ -710,7 +710,7 @@ subprojects {
                         access 'config/access.txt'
                         constructors 'config/constructors.txt'
                         exceptions 'config/exceptions.txt'
-                        mappings 'config/joined.tsrg'
+                        mappings 'config/joined.srg'
                         inject 'config/inject/'
                         statics 'config/static_methods.txt'
                         patches {
@@ -742,7 +742,7 @@ subprojects {
         destinationDirectory = file(PATH_BUILD + '/distributions')
 
         from generateConfiguration
-        from(file('joined.tsrg')){ into 'config/' }
+        from(file('joined.srg')){ into 'config/' }
         
         if (MC_VERSION.compareTo(MC_1_12_2) <= 0) {
             dependsOn dumpStatic
