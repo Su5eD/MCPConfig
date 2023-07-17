@@ -15,9 +15,9 @@
         "jvmargs": []
     },
     "rename": {
-        "version": "net.md-5:SpecialSource:1.11.1-fixed:shaded",
+        "version": "net.md-5:SpecialSource:1.8.3:shaded",
         "args": ["--in-jar", "{input}", "--out-jar", "{output}", "--srg-in", "{mappings}", "--kill-source"],
-        "repo": "https://maven.su5ed.dev/releases/"
+        "repo": "https://repo1.maven.org/maven2/"
     },
     "filter": {
         "version": "dev.su5ed:JarFilter:1.0.0:shaded",

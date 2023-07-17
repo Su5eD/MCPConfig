@@ -1,4 +1,3 @@
-. net/minecraft/src/
 a net/minecraft/crash/CrashReport
 	a field_71513_a
 	b field_71511_b
